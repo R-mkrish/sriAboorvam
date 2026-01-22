@@ -1,0 +1,68 @@
+<div class="home-container">
+  <!-- Hero Carousel Section -->
+  <section class="hero-carousel">
+    <div class="carousel-wrapper">
+      <div class="carousel-slides" [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
+        <div class="carousel-slide" *ngFor="let item of carouselItems">
+          <div class="slide-image" [style.background-image]="'url(' + item.image + ')'"></div>
+          <div class="slide-content">
+            <h1>{{ item.title }}</h1>
+            <p>{{ item.description }}</p>
+            <button class="cta-button" routerLink="/contact">Get Started</button>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-indicators">
+        <span *ngFor="let item of carouselItems; let i = index" 
+              [class.active]="i === currentSlide"
+              (click)="goToSlide(i)"></span>
+      </div>
+      <button class="carousel-nav prev" (click)="goToSlide((currentSlide - 1 + carouselItems.length) % carouselItems.length)">‹</button>
+      <button class="carousel-nav next" (click)="goToSlide((currentSlide + 1) % carouselItems.length)">›</button>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <h2>Why Choose Us?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>Premium Quality</h3>
+          <p>High-grade materials ensuring durability and protection for your CNC machines.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚙️</div>
+          <h3>Expert Service</h3>
+          <p>Professional technicians with years of experience in CNC machine maintenance.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Custom Solutions</h3>
+          <p>Tailored covers designed to fit your specific machine requirements perfectly.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h3>Fast Delivery</h3>
+          <p>Quick turnaround times without compromising on quality or precision.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to Protect Your CNC Machines?</h2>
+      <p>Contact us today for a free consultation and quote</p>
+      <button class="cta-button" routerLink="/contact">Contact Us Now</button>
+    </div>
+  </section>
+</div>
+
+<!-- Enquiry Floating Button -->
+<div class="enquiry-float" (click)="scrollToEnquiry()" title="Click to Enquire">
+  <span>💬</span>
+  <span class="enquiry-text">Enquire Now</span>
+</div>
